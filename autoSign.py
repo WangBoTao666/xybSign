@@ -243,10 +243,10 @@ def getUserInfo():
 def sendServerChan(msg):
     log('正在发送Server酱。。。')
     userInfo = getUserInfo()
-    res = requests.post(url='https://sc.ftqq.com/{0}.send'.format(userInfo['ServerChan']),
+    res = requests.post(url='https://sctapi.ftqq.com/{0}.send'.format(userInfo['ServerChan']),
                             data={'text': '校友邦签到结果', 'desp': getTimeStr() + "\n" + str(msg)})
-    code = res.json()['errmsg']
-    if code == 'success':
+    code = res.json()['data']['error']
+    if code == 'SUCCESS':
         log('发送Server酱通知成功。。。')
     else:
         log('发送Server酱通知失败。。。')
